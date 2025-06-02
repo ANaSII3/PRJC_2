@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10;
     public Rigidbody2D rb;
     // Start is called before the first frame update
+    public bool isGrounded;
+
+    public GroundChecker groundChecker;
+    
     void Start()
     {
        rb = GetComponent<Rigidbody2D>(); 
@@ -35,14 +39,23 @@ public class PlayerController : MonoBehaviour
       }
       
         
-        if (Input.GetKeyDown(KeyCode.Space))
-   {
+      if (Input.GetKeyDown(KeyCode.Space))
+      {
+          rb.AddForce( Vector2.up * jumpForce );
 
-       
-       rb.AddForce( Vector2.up * jumpForce );
+      }
+    }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Debug.Log($"Object is colliding with: {collision.gameObject}");
+        isGrounded = true;
 
+    }
 
-   }
- 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        
+        isGrounded = false;
     }
 }
