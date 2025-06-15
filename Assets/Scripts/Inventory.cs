@@ -12,7 +12,7 @@ using UnityEngine;
     public void AddItem(GameObject item)
     {
         items.Add(item);
-        Debug.Log("Предмет добавлен в инвентарь: " + item.name);
+        Debug.Log("Item added to inventory: " + item.name);
     }
 
     
