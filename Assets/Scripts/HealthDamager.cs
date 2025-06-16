@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class HealthDamager : MonoBehaviour
 {
-    public float damage = 40;
+    public float damage = 20;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {

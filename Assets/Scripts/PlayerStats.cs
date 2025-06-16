@@ -21,6 +21,7 @@ public class PlayerStats : MonoBehaviour
 		damage = Mathf.Abs(damage);
 		health = Mathf.Clamp(health - damage, 0, maxHealth);
 		//if health-damage > maxHealth => maxHealth
+		
 		//
 		CheckHealth();
 		
