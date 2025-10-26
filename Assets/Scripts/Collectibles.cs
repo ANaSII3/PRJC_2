@@ -5,16 +5,23 @@ using UnityEngine;
 public class Collectibles : MonoBehaviour
 {
     
+    
+
+  
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            return;
+            CollectCounter counter = FindObjectOfType<CollectCounter>();
+            if (counter != null)
+            {
+                counter.AddItem();
+            }
+
+            Destroy(gameObject);
         }
-        Inventory inventory = collision.gameObject.GetComponent<Inventory>();
-        
-        Destroy(gameObject);
     }
+
 
     // Update is called once per frame
     void Update()

@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
 	{
 		if (health == 0)
 		{
-			anim.SetTrigger("isDead");
+			anim.SetTrigger("IsDead");
 			isDead = true;
 			Invoke(nameof(ReloadScene), 2);
 		}

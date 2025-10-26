@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float runSpeed = 15;
-    public float jumpForce = 10;
+    public float jumpForce = 1;
     public Rigidbody2D rb;
     public Animator anim;
     // Start is called before the first frame update
@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
           spriteRenderer.flipX = false;
       }
 
+      
 
       if(moveInput !=0)
       {
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
       
       if(Input.GetKey(KeyCode.LeftShift))
       {
-
+        
          rb.velocity = new Vector2(moveInput * runSpeed, rb.velocity.y);
 
       }
@@ -63,16 +64,30 @@ public class PlayerController : MonoBehaviour
       else
       
       {
-      rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+          
+          rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
       }
+
+
+      if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            //rb.AddForce(Vector2.up * jumpForce);
+            anim.SetBool("IsJumping", true); 
+        }
+
+       
+        anim.SetBool("IsJumping", !isGrounded);
       
         
       if (Input.GetKeyDown(KeyCode.Space))
       {
+          
           rb.AddForce( Vector2.up * jumpForce );
 
       }
-    }
+      
+      
+     }
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
